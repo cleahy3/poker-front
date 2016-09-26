@@ -23,6 +23,14 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
   /* IE6-9 */
   padding-bottom: 3em; }
+  header h1 {
+    padding-top: 1em;
+    font-weight: bold; }
+  header img {
+    padding-top: 1em;
+    float: left;
+    max-height: 9em;
+    max-width: 9em; }
 
 span {
   color: red; }
@@ -66,9 +74,5 @@ span {
 .myButton:active {
   position: relative;
   top: 1px; }
-
-h1 {
-  padding-top: 1em;
-  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
