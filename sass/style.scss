@@ -15,7 +15,27 @@ nav{
 body{
 	font-family:$font-body;
 }
+img{
+	    margin: 0px auto;
+   
+    float: none;
+    display: block;
+}
+canvas {
+	background-image: url("../img/poker-table.png");
+    margin: auto;
+    margin-top: 1em;
+    width: 80%;
+    height: 30em;
+   // background: #bfbfbf;
+    text-align: center;
+    display: block;
 
+    background-repeat:no-repeat;
+background-size:contain;
+background-position:center;
+	
+}
 header{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
 background: rgb(125,126,125); /* Old browsers */
