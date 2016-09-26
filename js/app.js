@@ -1,5 +1,10 @@
 var isClicked = false;
 $(function(){
+	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
+ 	function(data) {
+    	console.log(data);
+   	
+	})
  	$('#home').on('click', function(event){
  		$('#body').show();
  		$('#body').html('test paragraph');
@@ -25,17 +30,21 @@ $(function(){
  		isClicked = true;
  	
  	});
- 	$('#deal').on('click', function(event){
- 		$.ajax({
-    url: "http://localhost:3000/deal",
-    type: 'GET',
-    success: function(response) {
+ 	$('#body').on('click', 'span' ,function(event){
+ 	var target = $( event.target );	
+ 	if(target.is === "button"){
+ 	 $.ajax({
+   	 url: "http://localhost:3000/api/deal",
+   	 type: 'GET',
+   	 dataType: 'jsonp',
+   	 success: function(response) {
     	console.log(response.data);
     },
-    error: function(){
+  	  error: function(){
       alert("Cannot get data");
     }
- 	});
+	})
+ 	};
  });
  	
  });
