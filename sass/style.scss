@@ -16,14 +16,41 @@ body{
 	font-family:$font-body;
 }
 img{
-	    margin: 0px auto;
-   
+	margin: 0px auto;
     float: none;
     display: block;
+}
+#usercard-one {
+    background: #FFFFFF;
+    height: 50px;
+    width: 30px;
+    margin-left: 47%;
+    margin-top: 32%;
+    position: fixed;
+    border-style: solid #000000;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #000000;
+    color: #000000;
+}
+
+#usercard-two {
+    background: #FFFFFF;
+    height: 50px;
+    width: 30px;
+    margin-left: 43%;
+    margin-top: 32%;
+    position: fixed;
+    border-style: solid #000000;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #000000;
+    color: #000000;
 }
 
 #card-text{
     color: black;
+    padding-top:15em;
 }
 #poker-table {
 	background-image: url("../img/poker-table.png");
