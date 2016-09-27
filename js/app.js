@@ -56,7 +56,7 @@ if(!isClicked){
 	var CANVAS_WIDTH = 800;
 	var CANVAS_HEIGHT = 700;
 	console.log('hello world');
-	var canvasElement = $("<canvas id= \"canvas\"></canvas>");
+	var canvasElement = $("<span usemap= id= \"canvas\"></canvas>");
 	var canvas = canvasElement.get(0).getContext("2d");
 	canvasElement.appendTo('body');
 	$('#body').html("<button class=\"myButton\" id=\"deal\"> Deal </button> ");
