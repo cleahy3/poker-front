@@ -15,7 +15,11 @@ img {
   float: none;
   display: block; }
 
+#card-text {
+  color: black; }
+
 #poker-table {
+  background-image: url("../img/poker-table.png");
   margin: auto;
   margin-top: 1em;
   width: 80%;

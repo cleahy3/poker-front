@@ -1,17 +1,14 @@
 var isClicked = false;
 	var userCards={};
 $(function(){
-	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
- 	function(data) {
-    	console.log(data);
-   		userCards = data.user;
-	})
+	$('#poker-table').hide();
+
+	
  	$('#home').on('click', function(event){
  		$('#body').show();
  		$('#body').html('test paragraph');
  		$('#title').html('Home');
  		$('#poker-table').hide();
-
  		//console.log("working");
  	});
 
@@ -23,11 +20,9 @@ $(function(){
  	});
 
  	 $('#poker').on('click',  function(event){
- 		$('#poker-table').html("<img src='img/poker-table.png' height= '70%' width='70%' usemap='#poker-map'>");
- 		$('#deal').show();
+ 		$('#body').hide();
  		$('#poker-table').show();
  		$('#title').html('Poker');
-
  		isClicked = true;
  	
  	});
@@ -47,8 +42,21 @@ $(function(){
 	})
  	};
  });
- 	
+
+ 	$('#deal').on('click', function(event){
+	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
+ 		function(data) {
+    	console.log(data);
+   		userCards = data.user;
+   		//alert("your cards are: "+userCards.0["Number"]+" of ");
+   		$('#poker-table').append("<p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
+   			+userCards[1].Number+" of "+userCards[1].Suit+ '</p>');
+ 	});
+ 	$('#deal').attr("disabled", true);
  });
+
+ });
+
 
 
 
