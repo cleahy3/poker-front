@@ -135,3 +135,26 @@ span{
     top:1px;
 }
 
+
+@media screen and (min-width: 1000px) {
+#usercard-one {
+    margin-top: 22%;
+}
+
+#usercard-two {
+    margin-top: 22%;
+
+}
+}
+
+@media screen and (max-width: 770px) {
+#usercard-one {
+    margin-top: 22%;
+}
+
+#usercard-two {
+    margin-top: 22%;
+
+}
+}
+
