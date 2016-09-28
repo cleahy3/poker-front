@@ -163,7 +163,7 @@ header {
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #7d7e7d 0%, #0e0e0e 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7d7d', endColorstr='#0e0e0e',GradientType=0 );
   /* IE6-9 */
   padding-bottom: 3em; }
   header h1 {
@@ -232,6 +232,10 @@ span {
     margin-left: 38%;
     margin-top: 57%; }
 
+  #flopcard-one {
+    margin-left: 56%;
+    margin-top: 35%; }
+
   #flopcard-five {
     margin-left: 56%;
     margin-top: 35%; }
@@ -242,6 +246,10 @@ span {
 
   #flopcard-three {
     margin-left: 38%;
+    margin-top: 35%; }
+
+  #flopcard-four {
+    margin-left: 29%;
     margin-top: 35%; }
 
   #flopcard-two {

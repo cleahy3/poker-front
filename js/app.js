@@ -1,5 +1,7 @@
+
 var coinImage = new Image();
 coinImage.src = "img/cards.png";
+
 var isClicked = false;
 var symbol;
 var cardColour;
@@ -38,8 +40,10 @@ $(function(){
  		$('#poker').attr("disabled", false);
  		user.name=prompt('Enter your name:');
  		$.ajax({
+
    	 	url: "http://localhost:3000/api/game",
    	 	type: 'POST',
+
    	 	data: user,	 success: function(response) {
     	console.log(response.data);
     	},
@@ -57,7 +61,9 @@ $(function(){
  		$('#title').html('Poker');
  		isClicked = true;
 	 	 $.ajax({
-	   	 url: "http://localhost:3000/api/game",
+
+	   	url: "http://localhost:3000/api/game",
+
 	   	 type: 'GET',
 	   	 dataType: 'jsonp',
 	   	 success: function(response) {
@@ -87,7 +93,9 @@ $(function(){
  });
 
  	$('#deal').on('click', function(event){
+
 	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
+
  		function(data){
     	console.log(data);
 
@@ -167,7 +175,9 @@ $(function(){
  	forInt++;
  } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
  		$('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+
  	forInt++;
+
  	} else {
  		var card1 = cardHandle(flopCards[4]);
  		$('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");

@@ -49,7 +49,9 @@ img{
 }
 
 
+
 #flopcard-five {
+
     background: #FFFFFF;
     height: 50px;
     width: 30px;
@@ -63,7 +65,9 @@ img{
     color: #000000;
 }
 
+
 #flopcard-four {
+
     background: #FFFFFF;
     height: 50px;
     width: 30px;
@@ -91,7 +95,9 @@ img{
     color: #000000;
 }
 
+
 #flopcard-two {
+
     background: #FFFFFF;
     height: 50px;
     width: 30px;
@@ -105,7 +111,9 @@ img{
     color: #000000;
 }
 
+
 #flopcard-one {
+
     background: #FFFFFF;
     height: 50px;
     width: 30px;
@@ -181,7 +189,7 @@ background: rgb(125,126,125); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7d7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
 	padding-bottom: 3em;
 
 	h1{
@@ -270,11 +278,18 @@ span{
     margin-top: 57%;
 }
 
+
+#flopcard-one {
+    margin-left: 56%;
+    margin-top: 35%;
+}
+
 #flopcard-five {
     margin-left: 56%;
     margin-top: 35%;
 }
 #flopcard-four {
+
     margin-left: 47%;
     margin-top: 35%;
 }
@@ -282,6 +297,12 @@ span{
     margin-left: 38%;
     margin-top: 35%;
 }
+
+#flopcard-four {
+    margin-left: 29%;
+    margin-top: 35%;
+}
+
 #flopcard-two {
     margin-left: 29%;
     margin-top: 35%;
