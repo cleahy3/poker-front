@@ -212,6 +212,7 @@ $('#raise').on('click', function(event){
   });
 
 
+<<<<<<< HEAD
 //function that check maxBet
 
 
@@ -280,4 +281,6 @@ $('#call').on('click', function(event){
     }
  });
 
+
  });
+
