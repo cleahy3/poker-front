@@ -46,7 +46,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 45%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -59,7 +59,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 41%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -72,7 +72,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 37%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -85,7 +85,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 33%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -98,13 +98,33 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 29%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
   border-width: 2px;
   border-color: #000000;
   color: #000000; }
+
+#fold {
+  position: fixed;
+  margin-top: 27em;
+  margin-left: 13em; }
+
+#raise {
+  position: fixed;
+  margin-top: 27em;
+  margin-left: -16em; }
+
+#call {
+  position: fixed;
+  margin-top: 27em;
+  margin-left: -1.2em; }
+
+#bet {
+  margin-top: 45em;
+  position: fixed;
+  margin-left: -17em; }
 
 #card-text {
   color: black;
@@ -183,16 +203,15 @@ span {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6 ', endColorstr='#ffffff ',GradientType=0);
   background-color: #f6f6f6; }
 
-.myButton:active {
-  position: relative;
-  top: 1px; }
+#secret:active {
+  position: static; }
 
 @media screen and (min-width: 1000px) {
   #usercard-one {
-    margin-top: 22%; }
+    margin-top: 13%; }
 
   #usercard-two {
-    margin-top: 22%; } }
+    margin-top: 13%; } }
 @media screen and (max-width: 770px) {
   #usercard-one {
     margin-left: 47%;

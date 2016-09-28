@@ -7,7 +7,7 @@ var symbol;
 var cardColour;
 var number;
 
-var user;
+var user={balance:500};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
@@ -19,8 +19,11 @@ var forInt = 1;
 $(function(){
 	$('#poker').attr("disabled", true);
 	$('#poker-table').hide();
-    
-	
+	$('#call').hide(); 
+  $('#raise').hide(); 
+  $('#fold').hide();
+  $('#bet').hide();
+  $('#secret').hide();
  	$('#home').on('click', function(event){
  		$('#body').show();
  		
@@ -28,12 +31,19 @@ $(function(){
  		$('#poker-table').hide();
  		//console.log("working");
  	});
+  $('#bet').slider({
+    range: "min",
+    value: 1,
+    step: 1,
+    min: 0,
+    max: 500,
+  });
 
  	$('#login').on('click', function(event){
  		$('#title').html('Login');
  		$('#poker-table').hide();
  		$('#poker').attr("disabled", false);
- 		user=prompt('Enter your name:');
+ 		user.name=prompt('Enter your name:');
  		$.ajax({
 
    	 	url: "http://localhost:3000/api/game",
@@ -93,7 +103,9 @@ $(function(){
 
  		function(data){
     	console.log(data);
+
    		userCards = data.user;
+      user.hand= userCards;
    		card1 = cardHandle(userCards[0]);
    		card2 = cardHandle(userCards[1]);
    		flopCards = data.flop;
@@ -107,6 +119,10 @@ $(function(){
    		// <p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
    			// +userCards[1].Number+" of "+userCards[1].Suit+ '</p>
  	});
+  $('#call').show(); 
+  $('#raise').show(); 
+  $('#fold').show();
+  $('#bet').show();
  	$('#deal').attr("disabled", true);
  });
 
