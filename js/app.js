@@ -5,7 +5,7 @@ var symbol;
 var cardColour;
 var number;
 
-var user;
+var user={balance:500};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
@@ -20,6 +20,8 @@ $(function(){
 	$('#call').hide(); 
   $('#raise').hide(); 
   $('#fold').hide();
+  $('#bet').hide();
+  $('#secret').hide();
  	$('#home').on('click', function(event){
  		$('#body').show();
  		
@@ -27,12 +29,19 @@ $(function(){
  		$('#poker-table').hide();
  		//console.log("working");
  	});
+  $('#bet').slider({
+    range: "min",
+    value: 1,
+    step: 1,
+    min: 0,
+    max: 500,
+  });
 
  	$('#login').on('click', function(event){
  		$('#title').html('Login');
  		$('#poker-table').hide();
  		$('#poker').attr("disabled", false);
- 		user=prompt('Enter your name:');
+ 		user.name=prompt('Enter your name:');
  		$.ajax({
    	 	url: "http://localhost:3000/api/game",
    	 	type: 'POST',
@@ -86,7 +95,9 @@ $(function(){
 	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
  		function(data){
     	console.log(data);
+
    		userCards = data.user;
+      user.hand= userCards;
    		card1 = cardHandle(userCards[0]);
    		card2 = cardHandle(userCards[1]);
    		flopCards = data.flop;
@@ -102,7 +113,8 @@ $(function(){
  	});
   $('#call').show(); 
   $('#raise').show(); 
-  $('#fold').show();  
+  $('#fold').show();
+  $('#bet').show();
  	$('#deal').attr("disabled", true);
  });
 

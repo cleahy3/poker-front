@@ -121,6 +121,11 @@ img {
   margin-top: 27em;
   margin-left: -1.2em; }
 
+#bet {
+  margin-top: 45em;
+  position: fixed;
+  margin-left: -17em; }
+
 #card-text {
   color: black;
   padding-top: 15em; }
@@ -198,9 +203,8 @@ span {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6 ', endColorstr='#ffffff ',GradientType=0);
   background-color: #f6f6f6; }
 
-.myButton:active {
-  position: relative;
-  top: 1px; }
+#secret:active {
+  position: static; }
 
 @media screen and (min-width: 1000px) {
   #usercard-one {
