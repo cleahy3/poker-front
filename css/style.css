@@ -126,6 +126,17 @@ img {
   position: fixed;
   margin-left: -17em; }
 
+#bet-amount {
+  margin-top: 45em;
+  position: fixed;
+  margin-left: -4.8em; }
+
+#balance {
+  margin-left: 91em;
+  position: fixed;
+  margin-top: -2em;
+  color: #ffffff; }
+
 #card-text {
   color: black;
   padding-top: 15em; }

@@ -5,16 +5,17 @@ var symbol;
 var cardColour;
 var number;
 
-var user={balance:500};
+var user={balance:500, isIn: true};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
 
 var flopCards;
-
+var bet;
 var forInt = 1;
 	var userCards={};
 $(function(){
+  $('#balance').html("balance: "+user.balance);
 	$('#poker').attr("disabled", true);
 	$('#poker-table').hide();
 	$('#call').hide(); 
@@ -29,13 +30,7 @@ $(function(){
  		$('#poker-table').hide();
  		//console.log("working");
  	});
-  $('#bet').slider({
-    range: "min",
-    value: 1,
-    step: 1,
-    min: 0,
-    max: 500,
-  });
+
 
  	$('#login').on('click', function(event){
  		$('#title').html('Login');
@@ -101,7 +96,7 @@ $(function(){
    		card1 = cardHandle(userCards[0]);
    		card2 = cardHandle(userCards[1]);
    		flopCards = data.flop;
-
+      $('#bet').attr('max', user.balance);
 
  			
    		//alert("your cards are: "+userCards.0["Number"]+" of ");
@@ -179,8 +174,41 @@ $(function(){
  		$('#forward').attr('disabled', true);
  	}
  });
+ $('#bet').on('input change', function(event){
+  bet = this.value;
+  $('#bet-amount').val(bet);
+  // console.log(this.value);
 
+ });
 
+$('#raise').on('click', function(event){
+
+  if(forInt === 1){var card1 = cardHandle(flopCards[0]);
+    user.balance -= bet;
+  var card2 = cardHandle(flopCards[1]);
+  var card3 = cardHandle(flopCards[2]);
+
+  console.log('event');
+  $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+  $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+  $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
+  forInt++;
+  console.log("this is the balance:"+user.balance);
+ } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
+      user.balance -= bet;
+    $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+  forInt++;
+  console.log("this is the balance:"+user.balance);
+  } else {
+      user.balance -= bet;
+    var card1 = cardHandle(flopCards[4]);
+    $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    $('#forward').attr('disabled', true);
+    console.log("this is the balance:"+user.balance);
+    $('#balance').html(user.balance);
+    }
+ 
+});
  });
 
 
