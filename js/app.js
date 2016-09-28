@@ -17,8 +17,9 @@ var forInt = 1;
 $(function(){
 	$('#poker').attr("disabled", true);
 	$('#poker-table').hide();
-    
-	
+	$('#call').hide(); 
+  $('#raise').hide(); 
+  $('#fold').hide();
  	$('#home').on('click', function(event){
  		$('#body').show();
  		
@@ -99,6 +100,9 @@ $(function(){
    		// <p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
    			// +userCards[1].Number+" of "+userCards[1].Suit+ '</p>
  	});
+  $('#call').show(); 
+  $('#raise').show(); 
+  $('#fold').show();  
  	$('#deal').attr("disabled", true);
  });
 
