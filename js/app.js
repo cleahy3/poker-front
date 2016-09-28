@@ -91,7 +91,7 @@ $(function(){
  		function(data){
     	console.log(data);
 
-   		userCards = data.players[0].hand;
+   		userCards = data.users;
       user.hand = userCards;
    		card1 = cardHandle(user.hand[0]);
    		card2 = cardHandle(user.hand[1]);
@@ -212,7 +212,7 @@ $('#raise').on('click', function(event){
   });
 
 
-<<<<<<< HEAD
+
 //function that check maxBet
 
 
@@ -246,7 +246,7 @@ $('#call').on('click', function(event){
   $('#bet-amount').val(bet);
   // console.log(this.value);
 
-  }
+  })
 
 });
 
