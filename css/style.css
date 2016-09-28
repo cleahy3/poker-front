@@ -46,7 +46,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 45%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -59,7 +59,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 41%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -72,7 +72,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 37%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -85,7 +85,7 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 33%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
@@ -98,13 +98,28 @@ img {
   height: 50px;
   width: 30px;
   margin-left: 29%;
-  margin-top: 11%;
+  margin-top: 8%;
   position: fixed;
   border-style: solid #000000;
   border-radius: 5px;
   border-width: 2px;
   border-color: #000000;
   color: #000000; }
+
+#fold {
+  position: fixed;
+  margin-top: 27em;
+  margin-left: 9em; }
+
+#raise {
+  position: fixed;
+  margin-top: 27em;
+  margin-left: -20em; }
+
+#call {
+  position: fixed;
+  margin-top: 27em;
+  margin-left: -5em; }
 
 #card-text {
   color: black;
@@ -120,8 +135,7 @@ img {
   display: block;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
-  position: fixed }
+  background-position: center; }
 
 header {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
@@ -190,10 +204,10 @@ span {
 
 @media screen and (min-width: 1000px) {
   #usercard-one {
-    margin-top: 18%; }
+    margin-top: 13%; }
 
   #usercard-two {
-    margin-top: 18%; } }
+    margin-top: 13%; } }
 @media screen and (max-width: 770px) {
   #usercard-one {
     margin-left: 47%;

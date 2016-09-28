@@ -54,7 +54,7 @@ img{
     height: 50px;
     width: 30px;
     margin-left: 45%;
-    margin-top: 11%;
+    margin-top: 8%;
     position: fixed;
     border-style: solid #000000;
     border-radius: 5px;
@@ -68,7 +68,7 @@ img{
     height: 50px;
     width: 30px;
     margin-left: 41%;
-    margin-top: 11%;
+    margin-top: 8%;
     position: fixed;
     border-style: solid #000000;
     border-radius: 5px;
@@ -82,7 +82,7 @@ img{
     height: 50px;
     width: 30px;
     margin-left: 37%;
-    margin-top: 11%;
+    margin-top: 8%;
     position: fixed;
     border-style: solid #000000;
     border-radius: 5px;
@@ -96,7 +96,7 @@ img{
     height: 50px;
     width: 30px;
     margin-left: 33%;
-    margin-top: 11%;
+    margin-top: 8%;
     position: fixed;
     border-style: solid #000000;
     border-radius: 5px;
@@ -110,7 +110,7 @@ img{
     height: 50px;
     width: 30px;
     margin-left: 29%;
-    margin-top: 11%;
+    margin-top: 8%;
     position: fixed;
     border-style: solid #000000;
     border-radius: 5px;
@@ -119,6 +119,23 @@ img{
     color: #000000;
 }
 
+#fold {
+    position: fixed;
+    margin-top: 27em;
+    margin-left: 9em;
+}
+
+
+#raise {
+    position: fixed;
+    margin-top: 27em;
+    margin-left: -20em;
+}
+#call {
+    position: fixed;
+    margin-top: 27em;
+    margin-left: -5em;
+}
 
 
 #card-text{
@@ -211,11 +228,11 @@ span{
 
 @media screen and (min-width: 1000px) {
 #usercard-one {
-    margin-top: 22%;
+    margin-top: 13%;
 }
 
 #usercard-two {
-    margin-top: 22%;
+    margin-top: 13%;
 
 }
 }
