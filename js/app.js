@@ -15,12 +15,13 @@ var numberTwo;
 var flopCards;
 var bet;
 var forInt = 1;
+var maxBet=50;
 	var userCards={};
 $(function(){
   $('#balance').html("balance: "+user.balance);
 	$('#poker').attr("disabled", true);
 	$('#poker-table').hide();
-	$('#call').hide(); 
+	$('#call').hide();
   $('#raise').hide(); 
   $('#fold').hide();
   $('#bet').hide();
@@ -39,6 +40,7 @@ $(function(){
  		$('#poker-table').hide();
  		$('#poker').attr("disabled", false);
  		user.name=prompt('Enter your name:');
+
  		$.ajax({
 
    	 	url: "http://localhost:3000/api/game",
@@ -51,6 +53,7 @@ $(function(){
      	 alert("Cannot get data");
     	}
 		});
+
  		$('#login').attr('disabled', true);
  		$('#body').html("<h1>Click Play to continue</h1>");
  	});
@@ -100,7 +103,7 @@ $(function(){
     	console.log(data);
 
    		userCards = data.user;
-      user.hand= userCards;
+      user.hand = userCards;
    		card1 = cardHandle(userCards[0]);
    		card2 = cardHandle(userCards[1]);
    		flopCards = data.flop;
@@ -218,14 +221,22 @@ $('#raise').on('click', function(event){
     $('#balance').html(user.balance);
     }
  
-});
+  });
+
+
+//function that checks who has the currect highest bet
+
+$('#call').on('click', function(){
+  if (user.balance < maxbet){
+    bet = maxbet +
+  }
+// 
+//
+//
+//
+ //maxbet 
+ //bet = maxbet + bet
+ //return bet
+})
+
  });
-
-
-
-
-
-
-
-
-
