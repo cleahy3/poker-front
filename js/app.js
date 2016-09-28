@@ -156,7 +156,7 @@ $(function(){
  	forInt++;
  } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
  		$('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
- 		forInt++;
+ 	forInt++;
  	} else {
  		var card1 = cardHandle(flopCards[4]);
  		$('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
