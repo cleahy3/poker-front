@@ -120,7 +120,8 @@ img {
   display: block;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center; }
+  background-position: center;
+  position: fixed }
 
 header {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
@@ -189,10 +190,10 @@ span {
 
 @media screen and (min-width: 1000px) {
   #usercard-one {
-    margin-top: 22%; }
+    margin-top: 18%; }
 
   #usercard-two {
-    margin-top: 22%; } }
+    margin-top: 18%; } }
 @media screen and (max-width: 770px) {
   #usercard-one {
     margin-left: 47%;
