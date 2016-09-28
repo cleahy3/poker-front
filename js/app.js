@@ -7,7 +7,7 @@ var symbol;
 var cardColour;
 var number;
 
-var user={balance:500, isIn: true};
+var user={balance:500, isIn: true,isPlayer: true};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
@@ -63,18 +63,7 @@ $(function(){
  		$('#poker-table').show();
  		$('#title').html('Poker');
  		isClicked = true;
-	 	 $.ajax({
 
-	   	url: "http://localhost:3000/api/game",
-
-	   	 type: 'GET',
-	   	 dataType: 'jsonp',
-	   	 success: function(response) {
-	    	console.log(response.data);
-	    },
-	  	  error: function(){
-	      alert("Cannot get data");
-	    }});
 
  	});
 
@@ -102,10 +91,10 @@ $(function(){
  		function(data){
     	console.log(data);
 
-   		userCards = data.user;
+   		userCards = data.players[0].hand;
       user.hand = userCards;
-   		card1 = cardHandle(userCards[0]);
-   		card2 = cardHandle(userCards[1]);
+   		card1 = cardHandle(user.hand[0]);
+   		card2 = cardHandle(user.hand[1]);
    		flopCards = data.flop;
       $('#bet').attr('max', user.balance);
 
@@ -226,16 +215,19 @@ $('#raise').on('click', function(event){
 
 //function that checks who has the currect highest bet
 
-$('#call').on('click', function(){
-  if (user.balance < maxbet){
-    bet = maxbet +
-  }
-// 
-//
-//
-//
- //maxbet 
- //bet = maxbet + bet
- //return bet
-  })
-});
+
+// $('#call').on('click', function(){
+//   if (user.balance < maxbet){
+//     bet = maxbet +
+//   }
+// // 
+// //
+// //
+// //
+//  //maxbet 
+//  //bet = maxbet + bet
+//  //return bet
+// })
+
+ });
+
