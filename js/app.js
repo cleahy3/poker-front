@@ -102,7 +102,6 @@ $(function(){
    		//alert("your cards are: "+userCards.0["Number"]+" of ");
    		$('#poker-table').append("<div id='usercard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
    		$('#poker-table').append("<div id='usercard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
-   		$('#poker-table').append("<button id='forward' class='myButton'>Forward</button>");
    		// <p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
    			// +userCards[1].Number+" of "+userCards[1].Suit+ '</p>
  	});
@@ -213,19 +212,72 @@ $('#raise').on('click', function(event){
   });
 
 
-//function that checks who has the currect highest bet
+//function that check maxBet
 
-// $('#call').on('click', function(){
-//   if (user.balance < maxbet){
-//     bet = maxbet +
-//   }
-// // 
-// //
-// //
-// //
-//  //maxbet 
-//  //bet = maxbet + bet
-//  //return bet
-// })
+
+$('#call').on('click', function(event){
+  var difference =  maxBet - bet; 
+  if (bet < maxBet){
+    bet = bet + difference;
+    console.log(bet);
+  } else if (bet === maxBet){
+      if(forInt === 1){var card1 = cardHandle(flopCards[0]);
+    var card2 = cardHandle(flopCards[1]);
+    var card3 = cardHandle(flopCards[2]);
+
+    console.log('event');
+    $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+    $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
+    forInt++;
+   } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
+      $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+
+    forInt++;
+
+    } else {
+      var card1 = cardHandle(flopCards[4]);
+      $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    }
+    };
+ $('#bet').on('input change', function(event){
+  bet = this.value;
+  $('#bet-amount').val(bet);
+  // console.log(this.value);
+
+  }
+
+});
+
+ $('#fold').on('click', function(event){
+  $('#call').attr('disabled', true);
+  $('#fold').attr('disabled', true);
+  $('#raise').attr('disabled', true);
+  user.isIn = false;
+
+  if(forInt === 1){var card1 = cardHandle(flopCards[0]);
+    var card2 = cardHandle(flopCards[1]);
+    var card3 = cardHandle(flopCards[2]);
+
+    console.log('event');
+    $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+    $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
+    var card4 = cardHandle(flopCards[3]);
+      $('#poker-table').append("<div id='flopcard-four' style='color:"+card4.cardColour+"'>"+card4.symbol+"</br>"+card4.number+"</div>");
+      var card5 = cardHandle(flopCards[4]);
+       $('#poker-table').append("<div id='flopcard-five' style='color:"+card5.cardColour+"'>"+card5.symbol+"</br>"+card5.number+"</div>");
+    forInt = 4;
+   } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
+      $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+      var card2 = cardHandle(flopCards[4]);
+      $('#poker-table').append("<div id='flopcard-five' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+    forInt = 4;
+
+    } else {
+      var card1 = cardHandle(flopCards[4]);
+      $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    }
+ });
 
  });
