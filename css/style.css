@@ -41,7 +41,11 @@ img {
   border-color: #000000;
   color: #000000; }
 
+<<<<<<< HEAD
 #flopcard-one {
+=======
+#flopcard-five {
+>>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
   background: #FFFFFF;
   height: 50px;
   width: 30px;
@@ -54,7 +58,11 @@ img {
   border-color: #000000;
   color: #000000; }
 
+<<<<<<< HEAD
 #flopcard-two {
+=======
+#flopcard-four {
+>>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
   background: #FFFFFF;
   height: 50px;
   width: 30px;
@@ -80,7 +88,11 @@ img {
   border-color: #000000;
   color: #000000; }
 
+<<<<<<< HEAD
 #flopcard-four {
+=======
+#flopcard-two {
+>>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
   background: #FFFFFF;
   height: 50px;
   width: 30px;
@@ -93,7 +105,11 @@ img {
   border-color: #000000;
   color: #000000; }
 
+<<<<<<< HEAD
 #flopcard-five {
+=======
+#flopcard-one {
+>>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
   background: #FFFFFF;
   height: 50px;
   width: 30px;
@@ -202,11 +218,19 @@ span {
     margin-left: 38%;
     margin-top: 57%; }
 
+<<<<<<< HEAD
   #flopcard-one {
     margin-left: 56%;
     margin-top: 35%; }
 
   #flopcard-two {
+=======
+  #flopcard-five {
+    margin-left: 56%;
+    margin-top: 35%; }
+
+  #flopcard-four {
+>>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
     margin-left: 47%;
     margin-top: 35%; }
 
@@ -214,11 +238,19 @@ span {
     margin-left: 38%;
     margin-top: 35%; }
 
+<<<<<<< HEAD
   #flopcard-four {
     margin-left: 29%;
     margin-top: 35%; }
 
   #flopcard-five {
+=======
+  #flopcard-two {
+    margin-left: 29%;
+    margin-top: 35%; }
+
+  #flopcard-one {
+>>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
     margin-left: 20%;
     margin-top: 35%; } }
 
