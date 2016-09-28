@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 
-=======
 var coinImage = new Image();
 coinImage.src = "img/cards.png";
->>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
+
 var isClicked = false;
 var symbol;
 var cardColour;
@@ -37,16 +35,10 @@ $(function(){
  		$('#poker').attr("disabled", false);
  		user=prompt('Enter your name:');
  		$.ajax({
-<<<<<<< HEAD
-   	 	headers: {'Access-Control-Allow-Origin': '*' },
-      url: "http://localhost:3000/api/game",
-   	 	type: 'POST',
 
-
-=======
    	 	url: "http://localhost:3000/api/game",
    	 	type: 'POST',
->>>>>>> f7dff91e6f9d6a2a267df262c1bdedb3505007de
+
    	 	data: user,	 success: function(response) {
     	console.log(response.data);
     	},
