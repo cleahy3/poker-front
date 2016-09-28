@@ -237,6 +237,5 @@ $('#call').on('click', function(){
  //maxbet 
  //bet = maxbet + bet
  //return bet
-})
-
- });
+  })
+});
