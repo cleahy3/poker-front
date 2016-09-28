@@ -15,7 +15,103 @@ img {
   float: none;
   display: block; }
 
+#usercard-one {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 47%;
+  margin-top: 32%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#usercard-two {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 43%;
+  margin-top: 32%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#flopcard-one {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 45%;
+  margin-top: 11%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#flopcard-two {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 41%;
+  margin-top: 11%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#flopcard-three {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 37%;
+  margin-top: 11%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#flopcard-four {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 33%;
+  margin-top: 11%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#flopcard-five {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 29%;
+  margin-top: 11%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#card-text {
+  color: black;
+  padding-top: 15em; }
+
 #poker-table {
+  background-image: url("../img/poker-table.png");
   margin: auto;
   margin-top: 1em;
   width: 80%;
@@ -90,5 +186,40 @@ span {
 .myButton:active {
   position: relative;
   top: 1px; }
+
+@media screen and (min-width: 1000px) {
+  #usercard-one {
+    margin-top: 22%; }
+
+  #usercard-two {
+    margin-top: 22%; } }
+@media screen and (max-width: 770px) {
+  #usercard-one {
+    margin-left: 47%;
+    margin-top: 57%; }
+
+  #usercard-two {
+    margin-left: 38%;
+    margin-top: 57%; }
+
+  #flopcard-one {
+    margin-left: 56%;
+    margin-top: 35%; }
+
+  #flopcard-two {
+    margin-left: 47%;
+    margin-top: 35%; }
+
+  #flopcard-three {
+    margin-left: 38%;
+    margin-top: 35%; }
+
+  #flopcard-four {
+    margin-left: 29%;
+    margin-top: 35%; }
+
+  #flopcard-five {
+    margin-left: 20%;
+    margin-top: 35%; } }
 
 /*# sourceMappingURL=style.css.map */
