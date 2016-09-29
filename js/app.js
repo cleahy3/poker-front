@@ -7,7 +7,7 @@ var symbol;
 var cardColour;
 var number;
 
-var user={balance:500, isIn: true,isPlayer: true};
+var user={balance:500, isIn: true,isComputer: false};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
@@ -16,9 +16,11 @@ var flopCards;
 var bet = 50; 
 var forInt = 1;
 var maxBet=50;
+var minBal=0;
+
 	var userCards={};
   var computerCards={};
-  var computer ={balance:500, isIn: true,isPlayer: false};
+  var computer ={balance:500, isIn: true,isCompute: true};
   var computerBet=50;
 $(function(){
   $.ajax({
@@ -61,7 +63,8 @@ $(function(){
    	 	url: "http://localhost:3000/api/game",
    	 	type: 'POST',
 
-   	 	data: user,	 success: function(response) {
+   	 	data: user,
+      success: function(response) {
     	console.log(response.data);
     	},
   	  	error: function(){
@@ -268,7 +271,8 @@ $('#call').on('click', function(event){
         if(id === '#fold'){
             console.log('I AM CLEARLY NOT FOLD!!');
             
-        }
+   }
+   computerCard(round);
    }
    else if (round == 2){var card1 = cardHandle(flopCards[3]);
      user.balance -= bet;
@@ -280,7 +284,7 @@ $('#call').on('click', function(event){
           var card2 = cardHandle(flopCards[4]);
           $('#poker-table').append("<div id='flopcard-five' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
           
-      }}else{
+      }computerCard(round);}else{
       user.balance -= bet;
     $('#balance').html('Balance: '+ user.balance);
       console.log('i get here');
@@ -291,7 +295,9 @@ $('#call').on('click', function(event){
     round = 0;
     $(id).attr('disabled', true);
         
-        }}
+        }
+          computerCard(round);
+      }
  
       }
 
@@ -301,8 +307,9 @@ $('#call').on('click', function(event){
           } else {
            maxBet = computerBet;
           }
+          return console.log('Computer Bet '+ computerBet + ' at the end of round '+ round);
         }
-        return console.log('Computer Bet '+ computerBet + ' at the end of round '+ round);
-      }
+        
+      
  });
 
