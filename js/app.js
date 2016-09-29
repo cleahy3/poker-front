@@ -101,12 +101,14 @@ $(function(){
 	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
 
  		function(data){
-    	console.log(data);
+    	
 
-   		userCards = data.users[0];
+   		userCards = data['users'];
       user.hand = userCards;
+      console.log(userCards);
    		card1 = cardHandle(user.hand[0]);
    		card2 = cardHandle(user.hand[1]);
+      
    		flopCards = data.flop;
       $('#bet').attr('max', user.balance);
 
@@ -128,18 +130,19 @@ $(function(){
  		 var symbol;
  		 var cardColour;
  		 var number;
- 		 if (cards.Suit == "Diamonds"){
+
+ 		 if (cards['Suit'] == "Diamonds"){
    				symbol = "&diams;";
    				cardColour = "#FF0000";
    		} else if
-   		(cards.Suit=="Spades"){
+   		(cards['Suit']=="Spades"){
    			symbol = "&spades;";
    			cardColour = "#000000";
-   		} else if(cards.Suit=="Hearts"){
+   		} else if(cards['Suit']=="Hearts"){
    			symbol = "&hearts;";
    			cardColour = "#FF0000";
    		} else if
-   			(cards.Suit=="Clubs"){
+   			(cards['Suit']=="Clubs"){
    			symbol = "&clubs;";
    			cardColour = "#000000";
    		}
@@ -235,7 +238,7 @@ $('#call').on('click', function(event){
     console.log(bet);
   } else if (bet === maxBet){
     if(forInt === 1){var card1 = cardHandle(flopCards[0]);
-    computerTurn(forInt);
+    computerTurn(forInt, id);
     var card2 = cardHandle(flopCards[1]);
     var card3 = cardHandle(flopCards[2]);
 
@@ -272,7 +275,7 @@ $('#call').on('click', function(event){
   
  });
 
- function computerTurn(round){
+ function computerTurn(round, id){
   $.ajax({
 
       url: "http://localhost:3000/api/turn"+round,
@@ -303,7 +306,6 @@ $('#call').on('click', function(event){
       var card2 = cardHandle(flopCards[4]);
       $('#poker-table').append("<div id='flopcard-five' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
     round = 4;
-
     } else {
       var card1 = cardHandle(flopCards[4]);
       $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
