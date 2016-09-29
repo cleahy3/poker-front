@@ -1,27 +1,24 @@
 
 var coinImage = new Image();
 coinImage.src = "img/cards.png";
-
 var isClicked = false;
 var symbol;
 var cardColour;
 var number;
-
 var user={balance:500, isIn: true,isComputer: false};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
-
 var flopCards;
 var bet = 50; 
 var forInt = 1;
-var maxBet=50;
-var minBal=0;
+var maxBet = 50;
+var minBal = 0;
+var userCards={};
+var computerCards={};
+var computer ={balance:500, isIn: true,isCompute: true};
+var computerBet = 1;
 
-	var userCards={};
-  var computerCards={};
-  var computer ={balance:500, isIn: true,isCompute: true};
-  var computerBet=50;
 $(function(){
   $.ajax({
 
@@ -32,7 +29,7 @@ $(function(){
       console.log(response.data);
       },
         error: function(){
-       alert("Cannot get data");
+       swal("Cannot get data");
       }
     });
   $('#balance').html("balance: "+user.balance);
@@ -56,7 +53,7 @@ $(function(){
  		$('#title').html('Login');
  		$('#poker-table').hide();
  		$('#poker').attr("disabled", false);
- 		user.name=prompt('Enter your name:');
+ 		user.name=swal('Username','Enter your name:', 'input');
 
  		$.ajax({
 
@@ -68,7 +65,7 @@ $(function(){
     	console.log(response.data);
     	},
   	  	error: function(){
-     	 alert("Cannot get data");
+     	 swal("Cannot get data");
     	}
 		});
 
@@ -96,7 +93,7 @@ $(function(){
     	console.log(response.data);
     },
   	  error: function(){
-      alert("Cannot get data");
+      swal("Cannot get data");
     }
 	});
  	};
@@ -124,7 +121,7 @@ $(function(){
       $('#bet').attr('max', user.balance);
 
  			
-   		//alert("your cards are: "+userCards.0["Number"]+" of ");
+   		//swal("your cards are: "+userCards.0["Number"]+" of ");
    		$('#poker-table').append("<div id='usercard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
    		$('#poker-table').append("<div id='usercard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
    		// <p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
@@ -209,6 +206,8 @@ $(function(){
  });
 
 $('#raise').on('click', function(event){
+    bet = $('#bet').val();
+    maxBet = bet;
 
     computerTurn(forInt, 'not');
     forInt++;
@@ -243,18 +242,10 @@ $('#call').on('click', function(event){
  });
 
  function computerTurn(round, id){
-  $.ajax({
-
-      url: "http://localhost:3000/api/turn"+round,
-      type: 'POST',
-
-      data: bet,  success: function(response) {
-      console.log(response.data);
-      },
-        error: function(){
-       alert("Cannot get data");
-      }
-    });
+  
+  console.log(user.balance);
+  console.log(user.balance-bet);
+  if((user.balance-bet) > 0){
   if(round === 1){var card1 = cardHandle(flopCards[0]);
     user.balance -= bet;
     $('#balance').html('Balance: ' +user.balance);
@@ -298,16 +289,26 @@ $('#call').on('click', function(event){
         }
           computerCard(round);
       }
- 
+      } else {
+        swal("The bet is too high ");
+      }
       }
 
       function computerCard(round){
-        if (computerBet < bet){
-          computerBet = bet;
-          } else {
-           maxBet = computerBet;
+        if ((computer.balance - bet) > 0){
+          if (computerBet < bet){
+            computerBet = bet;
+            console.log(computer.hand);
+            computer.balance -= computerBet;
+            } else {
+             maxBet = computerBet;
           }
-          return console.log('Computer Bet '+ computerBet + ' at the end of round '+ round);
+      } else{
+        swal("The Computer is all in");
+      }
+
+          return swal('he called', 'Computer Bet '+ computerBet + ' at the end of round '+ round+ ' leaving them with '+computer.balance);
+          
         }
         
       
