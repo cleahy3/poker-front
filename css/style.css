@@ -7,6 +7,9 @@ nav {
     margin: 0px	auto;
     font-size: 1em; }
 
+button{
+  font-family: 'Chewy', cursive;
+}
 body {
   font-family: "Roboto", sans-serif; }
 
@@ -132,10 +135,11 @@ img {
   margin-left: -4.8em; }
 
 #balance {
-  margin-left: 91em;
-  position: fixed;
-  margin-top: -2em;
-  color: #ffffff; }
+    position: fixed;
+    margin-top: -2em;
+    color: #000000;
+    font-family: 'Chewy', cursive;
+}
 
 #card-text {
   color: black;
@@ -197,12 +201,12 @@ span {
   display: inline-block;
   cursor: pointer;
   color: #000000;
-  font-family: Verdana;
   font-size: 18px;
   font-weight: bold;
   padding: 8px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff; }
+  text-shadow: 0px 1px 0px #ffffff;
+  font-family: 'Chewy', cursive; }
 
 .myButton:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));

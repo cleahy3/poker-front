@@ -13,17 +13,20 @@ var cardColourTwo;
 var numberTwo;
 
 var flopCards;
-var bet;
+var bet = 50; 
 var forInt = 1;
 var maxBet=50;
 	var userCards={};
+  var computerCards={};
+  var computer ={balance:500, isIn: true,isPlayer: false};
+  var computerBet=50;
 $(function(){
   $.ajax({
 
       url: "http://localhost:3000/api/end",
       type: 'GET',
 
-      data: user,  success: function(response) {
+        success: function(response) {
       console.log(response.data);
       },
         error: function(){
@@ -102,13 +105,18 @@ $(function(){
 
  		function(data){
     	
-
+     
    		userCards = data['users'];
       user.hand = userCards;
-      console.log(userCards);
+
+      computerCards = data['computer'];
+      computer.hand = computerCards;
+
+      console.log(data);
    		card1 = cardHandle(user.hand[0]);
    		card2 = cardHandle(user.hand[1]);
       
+
    		flopCards = data.flop;
       $('#bet').attr('max', user.balance);
 
@@ -199,31 +207,13 @@ $(function(){
 
 $('#raise').on('click', function(event){
 
-  if(forInt === 1){var card1 = cardHandle(flopCards[0]);
-    user.balance -= bet;
-  var card2 = cardHandle(flopCards[1]);
-  var card3 = cardHandle(flopCards[2]);
-
-  console.log('event');
-  $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-  $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
-  $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
-  forInt++;
-  console.log("this is the balance:"+user.balance);
- } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
-      user.balance -= bet;
-    $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-  forInt++;
-  console.log("this is the balance:"+user.balance);
-  } else {
-      user.balance -= bet;
-    var card1 = cardHandle(flopCards[4]);
-    $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-    $('#forward').attr('disabled', true);
-    console.log("this is the balance:"+user.balance);
-    $('#balance').html(user.balance);
+    computerTurn(forInt, 'not');
+    forInt++;
+    if(forInt>3){
+      $('#call').attr("disabled", true);
+      $('#raise').attr("disabled", true);
+      $('#fold').attr("disabled", true);
     }
- 
   });
 
 
@@ -234,35 +224,9 @@ $('#raise').on('click', function(event){
 $('#call').on('click', function(event){
   var difference =  maxBet - bet; 
   if (bet < maxBet){
-    bet = bet + difference;
-    console.log(bet);
-  } else if (bet === maxBet){
-    if(forInt === 1){var card1 = cardHandle(flopCards[0]);
-    computerTurn(forInt, id);
-    var card2 = cardHandle(flopCards[1]);
-    var card3 = cardHandle(flopCards[2]);
-
-    console.log('event');
-    $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-    $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
-    $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
-    forInt++;
-   } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
-      $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-
-    forInt++;
-
-    } else {
-      var card1 = cardHandle(flopCards[4]);
-      $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    console.log(card);
+    computerTurn(forInt, this.id);
     }
-    };
- $('#bet').on('input change', function(event){
-  bet = this.value;
-  $('#bet-amount').val(bet);
-  // console.log(this.value);
-
-  })
 
 });
 
@@ -289,28 +253,56 @@ $('#call').on('click', function(event){
       }
     });
   if(round === 1){var card1 = cardHandle(flopCards[0]);
+    user.balance -= bet;
+    $('#balance').html('Balance: ' +user.balance);
+    console.log(user.balance)
     var card2 = cardHandle(flopCards[1]);
     var card3 = cardHandle(flopCards[2]);
-
+    console.log(round);
     console.log('event');
+
     $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
     $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
     $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
-    var card4 = cardHandle(flopCards[3]);
-      $('#poker-table').append("<div id='flopcard-four' style='color:"+card4.cardColour+"'>"+card4.symbol+"</br>"+card4.number+"</div>");
-      var card5 = cardHandle(flopCards[4]);
-       $('#poker-table').append("<div id='flopcard-five' style='color:"+card5.cardColour+"'>"+card5.symbol+"</br>"+card5.number+"</div>");
-    round = 4;
-   } else if (round == 2){var card1 = cardHandle(flopCards[3]);
+    
+        if(id === '#fold'){
+            console.log('I AM CLEARLY NOT FOLD!!');
+            
+        }
+   }
+   else if (round == 2){var card1 = cardHandle(flopCards[3]);
+     user.balance -= bet;
+    $('#balance').html('Balance: ' +user.balance);
       $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-      var card2 = cardHandle(flopCards[4]);
-      $('#poker-table').append("<div id='flopcard-five' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
-    round = 4;
-    } else {
+      
+      if(id === '#fold'){
+          console.log('im not folding');
+          var card2 = cardHandle(flopCards[4]);
+          $('#poker-table').append("<div id='flopcard-five' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+          
+      }}else{
+      user.balance -= bet;
+    $('#balance').html('Balance: '+ user.balance);
+      console.log('i get here');
       var card1 = cardHandle(flopCards[4]);
       $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-    }
- }
+      
+      if(id === '#fold'){
+    round = 0;
+    $(id).attr('disabled', true);
+        
+        }}
+ 
+      }
 
+      function computerCard(round){
+        if (computerBet < bet){
+          computerBet = bet;
+          } else {
+           maxBet = computerBet;
+          }
+        }
+        return console.log('Computer Bet '+ computerBet + ' at the end of round '+ round);
+      }
  });
 
