@@ -29,50 +29,50 @@ $(function(){
     });
 
   $('#balance').html("Balance: "+user.balance);
-	$('#poker').attr("disabled", true);
-	$('#poker-table').hide();
-	$('#call').hide();
+  $('#poker').attr("disabled", true);
+  $('#poker-table').hide();
+  $('#call').hide();
   $('#raise').hide(); 
   $('#fold').hide();
   $('#bet').hide();
   $('#secret').hide();
 
   // show body, set title to Home and hide table when clicking home
- 	$('#home').on('click', function(event){
- 		$('#body').show();
- 		$('#title').html('Home');
- 		$('#poker-table').hide();
- 		//console.log("working");
- 	});
+  $('#home').on('click', function(event){
+    $('#body').show();
+    $('#title').html('Home');
+    $('#poker-table').hide();
+    //console.log("working");
+  });
 
   // Prompt from username and post what is entered to 'user' object inside 'name' to api/game
- 	$('#login').on('click', function(event){
- 		$('#title').html('Login');
- 		$('#poker-table').hide();
- 		$('#poker').attr("disabled", false);
- 		// user.name=html('<input type="text"');
+  $('#login').on('click', function(event){
+    $('#title').html('Login');
+    $('#poker-table').hide();
+    $('#poker').attr("disabled", false);
+    // user.name=html('<input type="text"');
 
- 		$.ajax({
+    $.ajax({
 
-   	 	url: API_URL + "/api/game",
-   	 	type: 'POST',
+      url: API_URL + "/api/game",
+      type: 'POST',
 
-   	 	data: user,
+      data: user,
       success: function(response) {
-    	console.log(response.data);
-    	},
-  	  	error: function(){
-     	 swal("Cannot get data");
-    	}
-		});
+      console.log(response.data);
+      },
+        error: function(){
+       swal("Cannot get data");
+      }
+    });
 
- 		$('#login').attr('disabled', true);
- 		$('#body').html("<h1>Click Play to continue</h1><input type='text' id='name-input' placeholder='enter name'/>");
- 	});
+    $('#login').attr('disabled', true);
+    $('#body').html("<h1>Click Play to continue</h1><input type='text' id='name-input' placeholder='enter name'/>");
+  });
 
     // Display poker table on clicking play button 
- 	  $('#poker').on('click',  function(event){
- 		user.name= $('#name-input').val();
+    $('#poker').on('click',  function(event){
+    user.name= $('#name-input').val();
     $.ajax({
 
       url: API_URL + "/api/game",
@@ -87,129 +87,129 @@ $(function(){
       }
     });
     $('#body').hide();
- 		$('#poker-table').show();
- 		$('#title').html('Poker');
- 		isClicked = true;
+    $('#poker-table').show();
+    $('#title').html('Poker');
+    isClicked = true;
     console.log('user:   '+ user.name)
- 	});
+  });
 
     // 
- 	  $('#body').on('click', 'span' ,function(event){
- 	  var target = $( event.target );	
- 	  if(target.is === "button"){
- 	  $.ajax({
-   	 url: API_URL + "/api/deal",
-   	 type: 'GET',
-   	 dataType: 'jsonp',
-   	 success: function(response) {
-    	console.log(response.data);
+    $('#body').on('click', 'span' ,function(event){
+    var target = $( event.target ); 
+    if(target.is === "button"){
+    $.ajax({
+     url: API_URL + "/api/deal",
+     type: 'GET',
+     dataType: 'jsonp',
+     success: function(response) {
+      console.log(response.data);
     },
-  	  error: function(){
+      error: function(){
       swal("Cannot get data");
     }
-	});
- 	};
+  });
+  };
  });
 
     // GET user and computer cards from api/deal and display
     // them on the poker table
- 	  $('#deal').on('click', function(event){
+    $('#deal').on('click', function(event){
 
-	  $.getJSON(API_URL + "/api/deal",    
+    $.getJSON(API_URL + "/api/deal",    
 
- 		function(data){
+    function(data){
     
-   		userCards = data['user'].hand;
+      userCards = data['user'].hand;
       user.hand = userCards;
 
       computerCards = data['computer'];
       computer.hand = computerCards;
 
       console.log(data);
-   		card1 = cardHandle(user.hand[0]);
-   		card2 = cardHandle(user.hand[1]);
+      card1 = cardHandle(user.hand[0]);
+      card2 = cardHandle(user.hand[1]);
       
 
-   		flopCards = data.flop;
+      flopCards = data.flop;
       $('#bet').attr('max', user.balance);
 
- 			
-   		//swal("your cards are: "+userCards.0["Number"]+" of ");
-   		$('#poker-table').append("<div id='usercard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-   		$('#poker-table').append("<div id='usercard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
-   		// <p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
-   			// +userCards[1].Number+" of "+userCards[1].Suit+ '</p>
- 	});
+      
+      //swal("your cards are: "+userCards.0["Number"]+" of ");
+      $('#poker-table').append("<div id='usercard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+      $('#poker-table').append("<div id='usercard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+      // <p id='card-text' >your cards are: "+userCards[0].Number+" of "+userCards[0].Suit+"<br> and " 
+        // +userCards[1].Number+" of "+userCards[1].Suit+ '</p>
+  });
   $('#call').show(); 
   $('#raise').show(); 
   $('#fold').show();
   $('#bet').show();
- 	$('#deal').attr("disabled", true);
+  $('#deal').attr("disabled", true);
  });
 
- 	function cardHandle(cards){
- 		 var symbol;
- 		 var cardColour;
- 		 var number;
+  function cardHandle(cards){
+     var symbol;
+     var cardColour;
+     var number;
 
- 		 if (cards['Suit'] == "Diamonds"){
-   				symbol = "&diams;";
-   				cardColour = "#FF0000";
-   		} else if
-   		(cards['Suit']=="Spades"){
-   			symbol = "&spades;";
-   			cardColour = "#000000";
-   		} else if(cards['Suit']=="Hearts"){
-   			symbol = "&hearts;";
-   			cardColour = "#FF0000";
-   		} else if
-   			(cards['Suit']=="Clubs"){
-   			symbol = "&clubs;";
-   			cardColour = "#000000";
-   		}
-   			number = cards.Number;
-   		switch (cards.Number){
-   			case 11:
-   			number = "J";
-   			break;
+     if (cards['Suit'] == "Diamonds"){
+          symbol = "&diams;";
+          cardColour = "#FF0000";
+      } else if
+      (cards['Suit']=="Spades"){
+        symbol = "&spades;";
+        cardColour = "#000000";
+      } else if(cards['Suit']=="Hearts"){
+        symbol = "&hearts;";
+        cardColour = "#FF0000";
+      } else if
+        (cards['Suit']=="Clubs"){
+        symbol = "&clubs;";
+        cardColour = "#000000";
+      }
+        number = cards.Number;
+      switch (cards.Number){
+        case 11:
+        number = "J";
+        break;
 
-   			case 12:
-   			number = "Q";
-   			break;
+        case 12:
+        number = "Q";
+        break;
 
-   			case 13:
-   			number = "K";
-   			break;
+        case 13:
+        number = "K";
+        break;
 
-   			case 14:
-   			number = "A";
-   			break;
-		}   
-		return card={ cardColour: cardColour,
-			number:number, symbol:symbol};
+        case 14:
+        number = "A";
+        break;
+    }   
+    return card={ cardColour: cardColour,
+      number:number, symbol:symbol};
 
- 	}
+  }
 
  $('#poker-table').on('click', '#forward', function(event){
- 	if(forInt === 1){var card1 = cardHandle(flopCards[0]);
- 	var card2 = cardHandle(flopCards[1]);
- 	var card3 = cardHandle(flopCards[2]);
+  if(forInt === 1){var card1 = cardHandle(flopCards[0]);
+  var card2 = cardHandle(flopCards[1]);
+  var card3 = cardHandle(flopCards[2]);
 
- 	console.log('event');
- 	$('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
- 	$('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
- 	$('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
- 	forInt++;
+  console.log('event');
+  $('#poker-table').append("<div id='flopcard-one' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+  $('#poker-table').append("<div id='flopcard-two' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+  $('#poker-table').append("<div id='flopcard-three' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");
+  forInt++;
  } else if (forInt == 2){var card1 = cardHandle(flopCards[3]);
- 		$('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    $('#poker-table').append("<div id='flopcard-four' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
 
- 	forInt++;
+  forInt++;
 
- 	} else {
- 		var card1 = cardHandle(flopCards[4]);
- 		$('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
- 		$('#forward').attr('disabled', true);
- 	}
+  } else {
+    var card1 = cardHandle(flopCards[4]);
+    $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+    $('#forward').attr('disabled', true);
+  }
  });
  $('#bet').on('input change', function(event){
   bet = this.value;
