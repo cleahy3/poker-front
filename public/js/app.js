@@ -12,6 +12,7 @@ var bet = 50;
 var forInt = 1;
 var maxBet = 50;
 var minBal = 0;
+var winner={};
 var userCards={};
 var computerCards={};
 var computerBet = 1;
@@ -293,16 +294,28 @@ $('#call').on('click', function(event){
           var card2 = cardHandle(flopCards[4]);
           $('#poker-table').append("<div id='flopcard-five' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
           
-      }computerCard(round);}else{
-      user.balance -= bet;
-    $('#balance').html('Balance: '+ user.balance);
-      console.log('i get here');
-      var card1 = cardHandle(flopCards[4]);
-      $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
-      
-      if(id === '#fold'){
-    round = 0;
-    $(id).attr('disabled', true);
+      }computerCard(round);}
+      else{
+          user.balance -= bet;
+          $('#balance').html('Balance: '+ user.balance);
+          console.log('i get here');
+          var card1 = cardHandle(flopCards[4]);
+          $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+           $.ajax({
+             url: API_URL + "/api/Winner",
+             type: 'GET',
+             dataType: 'jsonp',
+               success: function(response) {
+               console.log(response.data);
+               winner = response.data;
+             },  error: function(){
+               swal({title:"Cannot get data", timer:2000});
+             } 
+            });
+           swal({title:"The Winner Is!", text:winner, timer:2000});
+         if(id === '#fold'){
+            round = 0;
+            $(id).attr('disabled', true);
         
         }
           computerCard(round);
