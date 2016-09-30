@@ -119,7 +119,7 @@ $(function(){
 
  		function(data){
     
-   		userCards = data['users'];
+   		userCards = data['user'].hand;
       user.hand = userCards;
 
       computerCards = data['computer'];
