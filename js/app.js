@@ -1,11 +1,9 @@
-
-var coinImage = new Image();
-coinImage.src = "img/cards.png";
 var isClicked = false;
 var symbol;
 var cardColour;
 var number;
 var user={balance:500, isIn: true,isComputer: false};
+var computer ={balance:500, isIn: true,isCompute: true};
 var symbolTwo;
 var cardColourTwo;
 var numberTwo;
@@ -16,15 +14,12 @@ var maxBet = 50;
 var minBal = 0;
 var userCards={};
 var computerCards={};
-var computer ={balance:500, isIn: true,isCompute: true};
 var computerBet = 1;
 
 $(function(){
   $.ajax({
-
-      url: "http://localhost:3000/api/end",
+      url: "http://localhost:3001/api/end",
       type: 'GET',
-
         success: function(response) {
       console.log(response.data);
       },
@@ -32,6 +27,7 @@ $(function(){
        swal("Cannot get data");
       }
     });
+
   $('#balance').html("balance: "+user.balance);
 	$('#poker').attr("disabled", true);
 	$('#poker-table').hide();
@@ -40,24 +36,25 @@ $(function(){
   $('#fold').hide();
   $('#bet').hide();
   $('#secret').hide();
+
+  // show body, set title to Home and hide table when clicking home
  	$('#home').on('click', function(event){
  		$('#body').show();
- 		
  		$('#title').html('Home');
  		$('#poker-table').hide();
  		//console.log("working");
  	});
 
-
+  // Prompt from username and post what is entered to 'user' object inside 'name' to api/game
  	$('#login').on('click', function(event){
  		$('#title').html('Login');
  		$('#poker-table').hide();
  		$('#poker').attr("disabled", false);
- 		user.name=swal('Username','Enter your name:', 'input');
+ 		// user.name=html('<input type="text"');
 
  		$.ajax({
 
-   	 	url: "http://localhost:3000/api/game",
+   	 	url: "http://localhost:3001/api/game",
    	 	type: 'POST',
 
    	 	data: user,
@@ -70,23 +67,23 @@ $(function(){
 		});
 
  		$('#login').attr('disabled', true);
- 		$('#body').html("<h1>Click Play to continue</h1>");
+ 		$('#body').html("<h1>Click Play to continue</h1><input type='text' id='name-input' placeholder='enter name'/>");
  	});
 
- 	 $('#poker').on('click',  function(event){
+    // Display poker table on clicking play button 
+ 	  $('#poker').on('click',  function(event){
  		$('#body').hide();
  		$('#poker-table').show();
  		$('#title').html('Poker');
  		isClicked = true;
-
-
  	});
 
- 	$('#body').on('click', 'span' ,function(event){
- 	var target = $( event.target );	
- 	if(target.is === "button"){
- 	 $.ajax({
-   	 url: "http://localhost:3000/api/deal",
+    // 
+ 	  $('#body').on('click', 'span' ,function(event){
+ 	  var target = $( event.target );	
+ 	  if(target.is === "button"){
+ 	  $.ajax({
+   	 url: "http://localhost:3001/api/deal",
    	 type: 'GET',
    	 dataType: 'jsonp',
    	 success: function(response) {
@@ -99,13 +96,14 @@ $(function(){
  	};
  });
 
- 	$('#deal').on('click', function(event){
+    // GET user and computer cards from api/deal and display
+    // them on the poker table
+ 	  $('#deal').on('click', function(event){
 
-	 $.getJSON("http://localhost:3000/api/deal",    //getting JSON object from database
+	  $.getJSON("http://localhost:3001/api/deal",    
 
  		function(data){
-    	
-     
+    
    		userCards = data['users'];
       user.hand = userCards;
 
@@ -303,7 +301,7 @@ $('#call').on('click', function(event){
             } else {
              maxBet = computerBet;
           }
-      } else{
+      } else {
         swal("The Computer is all in");
       }
 
