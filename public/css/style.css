@@ -20,6 +20,31 @@ img {
 #end{
   display:block;
 }
+#computercard-one {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 47%;
+  margin-top: 2%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
+
+#computercard-two {
+  background: #FFFFFF;
+  height: 50px;
+  width: 30px;
+  margin-left: 43%;
+  margin-top: 2%;
+  position: fixed;
+  border-style: solid #000000;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #000000;
+  color: #000000; }
 #usercard-one {
   background: #FFFFFF;
   height: 50px;

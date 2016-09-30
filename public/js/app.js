@@ -124,7 +124,7 @@ $(function(){
       user.hand = userCards;
 
       computerCards = data['computer'];
-      computer.hand = computerCards;
+      computer.hand = computerCards.hand;
 
       console.log(data);
       card1 = cardHandle(user.hand[0]);
@@ -300,19 +300,29 @@ $('#call').on('click', function(event){
           $('#balance').html('Balance: '+ user.balance);
           console.log('i get here');
           var card1 = cardHandle(flopCards[4]);
+          console.log(computer.hand);
           $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
+            card2 = cardHandle(computer.hand[0]);
+            card3 = cardHandle(computer.hand[1]);
+      
+
+
+      
+      //swal("your cards are: "+computerCards.0["Number"]+" of ");
+      $('#poker-table').append("<div id='computercard-one' style='color:"+card2.cardColour+"'>"+card2.symbol+"</br>"+card2.number+"</div>");
+      $('#poker-table').append("<div id='computercard-two' style='color:"+card3.cardColour+"'>"+card3.symbol+"</br>"+card3.number+"</div>");    
            $.ajax({
              url: PAPI_URL + "/api/Winner",
              type: 'GET',
-             dataType: 'jsonp',
                success: function(response) {
-               console.log(response.data);
-               winner = response.data;
-             },  error: function(){
-               swal({title:"Cannot get data", timer:2000});
+               console.log(response);
+               winner = response;
+             },  error: function(xhr, something, err){
+              console.log(err);
+               swal({title:"Cannot get data",text:err, timer:2000});
              } 
             });
-           swal({title:"The Winner Is!", text:winner, timer:2000});
+           swal({title:"The Winner Is!", text: winner, timer:2000});
          if(id === '#fold'){
             round = 0;
             $(id).attr('disabled', true);
