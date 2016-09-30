@@ -237,11 +237,11 @@ $('#raise').on('click', function(event){
 
 
 $('#call').on('click', function(event){
-  var difference =  maxBet - bet; 
-  if (bet < maxBet){
+
+
     console.log(card);
     computerTurn(forInt, this.id);
-    }
+    forInt++;
 
 });
 
@@ -260,7 +260,7 @@ $('#call').on('click', function(event){
   console.log(user.balance-bet);
   if((user.balance-bet) > 0){
   if(round === 1){var card1 = cardHandle(flopCards[0]);
-    user.balance -= bet;
+    
     $('#balance').html('Balance: ' +user.balance);
     console.log(user.balance)
     var card2 = cardHandle(flopCards[1]);
@@ -275,7 +275,12 @@ $('#call').on('click', function(event){
         if(id === '#fold'){
             console.log('I AM CLEARLY NOT FOLD!!');
             
-   }
+        }else if(id ==='#call'){
+
+        }
+        else{
+          user.balance -= bet;
+        }
    computerCard(round);
    }
    else if (round == 2){var card1 = cardHandle(flopCards[3]);
