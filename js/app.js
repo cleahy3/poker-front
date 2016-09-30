@@ -28,7 +28,7 @@ $(function(){
       }
     });
 
-  $('#balance').html("balance: "+user.balance);
+  $('#balance').html("Balance: "+user.balance);
 	$('#poker').attr("disabled", true);
 	$('#poker-table').hide();
 	$('#call').hide();
@@ -328,7 +328,9 @@ $('#call').on('click', function(event){
           return swal('he called', 'Computer Bet '+ computerBet + ' at the end of round '+ round+ ' leaving them with '+computer.balance);
           
         }
+    $('#end').on('click',function(){
+      location.reload();
+    })    
         
-      
  });
 
