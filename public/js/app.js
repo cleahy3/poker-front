@@ -24,7 +24,7 @@ $(function(){
       console.log(response.data);
       },
         error: function(){
-       swal("Cannot get data");
+       swal({title:"Cannot get data",timer:2000});
       }
     });
 
@@ -83,7 +83,7 @@ $(function(){
       console.log(response.data);
       },
         error: function(){
-       swal("Cannot get data");
+       swal({title:"Cannot get data", timer:2000});
       }
     });
     $('#body').hide();
@@ -105,7 +105,7 @@ $(function(){
       console.log(response.data);
     },
       error: function(){
-      swal("Cannot get data");
+      swal({title:"Cannot get data", timer:2000});
     }
   });
   };
@@ -308,7 +308,7 @@ $('#call').on('click', function(event){
           computerCard(round);
       }
       } else {
-        swal("The bet is too high ");
+        swal({title:"The bet is too high ", timer:2000});
       }
       }
 
@@ -322,10 +322,10 @@ $('#call').on('click', function(event){
              maxBet = computerBet;
           }
       } else {
-        swal("The Computer is all in");
+        swal({title:"The Computer is all in", timer:2000});
       }
 
-          return swal('he called', 'Computer Bet '+ computerBet + ' at the end of round '+ round+ ' leaving them with '+computer.balance);
+          return swal({title:'he called', text:'Computer Bet '+ computerBet + ' at the end of round '+ round+ ' leaving them with '+computer.balance, timer:2000});
           
         }
     $('#end').on('click',function(){
