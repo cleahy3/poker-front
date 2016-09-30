@@ -17,7 +17,9 @@ img {
   margin: 0px auto;
   float: none;
   display: block; }
-
+#end{
+  display:block;
+}
 #usercard-one {
   background: #FFFFFF;
   height: 50px;
