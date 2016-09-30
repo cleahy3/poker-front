@@ -276,7 +276,7 @@ $('#call').on('click', function(event){
             console.log('I AM CLEARLY NOT FOLD!!');
             
         }else if(id ==='#call'){
-
+            
         }
         else{
           user.balance -= bet;
