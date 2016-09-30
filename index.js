@@ -13,7 +13,7 @@ app.use(layouts);
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-	res.render('index', { api: process.env.API_URL || 'http://localhost:3001'});
+	res.render('index', { api: process.env.PAPI_URL || 'http://localhost:3001'});
 })
 
 app.listen(port, function() {

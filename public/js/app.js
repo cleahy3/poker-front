@@ -19,7 +19,7 @@ var computerBet = 1;
 
 $(function(){
   $.ajax({
-      url: API_URL + "/api/end",
+      url: PAPI_URL + "/api/end",
       type: 'GET',
         success: function(response) {
       console.log(response.data);
@@ -55,7 +55,7 @@ $(function(){
 
     $.ajax({
 
-      url: API_URL + "/api/game",
+      url: PAPI_URL + "/api/game",
       type: 'POST',
 
       data: user,
@@ -76,7 +76,7 @@ $(function(){
     user.name= $('#name-input').val();
     $.ajax({
 
-      url: API_URL + "/api/game",
+      url: PAPI_URL + "/api/game",
       type: 'POST',
 
       data: user,
@@ -99,7 +99,7 @@ $(function(){
     var target = $( event.target ); 
     if(target.is === "button"){
     $.ajax({
-     url: API_URL + "/api/deal",
+     url: PAPI_URL + "/api/deal",
      type: 'GET',
      dataType: 'jsonp',
      success: function(response) {
@@ -116,7 +116,7 @@ $(function(){
     // them on the poker table
     $('#deal').on('click', function(event){
 
-    $.getJSON(API_URL + "/api/deal",    
+    $.getJSON(PAPI_URL + "/api/deal",    
 
     function(data){
     
@@ -302,7 +302,7 @@ $('#call').on('click', function(event){
           var card1 = cardHandle(flopCards[4]);
           $('#poker-table').append("<div id='flopcard-five' style='color:"+card1.cardColour+"'>"+card1.symbol+"</br>"+card1.number+"</div>");
            $.ajax({
-             url: API_URL + "/api/Winner",
+             url: PAPI_URL + "/api/Winner",
              type: 'GET',
              dataType: 'jsonp',
                success: function(response) {
