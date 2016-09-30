@@ -72,7 +72,21 @@ $(function(){
 
     // Display poker table on clicking play button 
  	  $('#poker').on('click',  function(event){
- 		$('#body').hide();
+ 		user.name= $('#name-input');§§
+    $.ajax({
+
+      url: "http://localhost:3001/api/game",
+      type: 'POST',
+
+      data: user,
+      success: function(response) {
+      console.log(response.data);
+      },
+        error: function(){
+       swal("Cannot get data");
+      }
+    });
+    $('#body').hide();
  		$('#poker-table').show();
  		$('#title').html('Poker');
  		isClicked = true;
