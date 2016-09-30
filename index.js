@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 
 app.use(layouts);
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	res.render('index', { api: process.env.API_URL || 'http://localhost:3001'});
