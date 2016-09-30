@@ -72,7 +72,7 @@ $(function(){
 
     // Display poker table on clicking play button 
  	  $('#poker').on('click',  function(event){
- 		user.name= $('#name-input');
+ 		user.name= $('#name-input').val();
     $.ajax({
 
       url: "http://localhost:3001/api/game",
@@ -90,6 +90,7 @@ $(function(){
  		$('#poker-table').show();
  		$('#title').html('Poker');
  		isClicked = true;
+    console.log('user:   '+ user.name)
  	});
 
     // 
